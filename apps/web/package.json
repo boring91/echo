@@ -15,7 +15,6 @@
     "@clerk/nextjs": "^6.28.1",
     "@sentry/nextjs": "^10",
     "@workspace/backend": "workspace:*",
-    "@workspace/math": "workspace:*",
     "@workspace/ui": "workspace:*",
     "convex": "1.25.4",
     "lucide-react": "^0.475.0",

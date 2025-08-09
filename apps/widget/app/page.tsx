@@ -7,7 +7,7 @@ type Props = {
   searchParams: Promise<{ organizationId: string }>;
 };
 
-export const Page = ({ searchParams }: Props) => {
+const Page = ({ searchParams }: Props) => {
   const { organizationId } = use(searchParams);
   return <WidgetView organizationId={organizationId} />;
 };
