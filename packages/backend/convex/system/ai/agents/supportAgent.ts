@@ -1,6 +1,8 @@
 import { components } from "../../../_generated/api";
 import { Agent } from "@convex-dev/agent";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { resolveConversation } from "../tools/resolveConversation";
+import { escalateConversation } from "../tools/escalateConversation";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
@@ -9,5 +11,5 @@ const openrouter = createOpenRouter({
 export const supportAgent = new Agent(components.agent, {
   name: "My agent",
   chat: openrouter.chat("deepseek/deepseek-chat-v3-0324:free"),
-  instructions: "You are a customer support agent",
+  instructions: `You are a customer support agent. Use "resolveConversation" tool when user expresses finalization of the conversation. use "escalateConversation" tool when user expresses frustration, or requests a human explicitly."`,
 });
