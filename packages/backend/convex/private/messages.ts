@@ -40,8 +40,7 @@ export const enhanceResponse = action({
       messages: [
         {
           role: "system",
-          content:
-            `Enhance the operator's message to be more professional, clear, and helpful 
+          content: `Enhance the operator's message to be more professional, clear, and helpful 
             while maintaining their intent and key information. 
             Give the enhanced version right away without any other additional text.
             
@@ -107,6 +106,12 @@ export const create = mutation({
       throw new ConvexError({
         code: "BAD_REQUEST",
         message: "Conversation resolved",
+      });
+    }
+
+    if (conversation.status === "unresolved") {
+      await ctx.db.patch(args.conversationId, {
+        status: "escalated",
       });
     }
 

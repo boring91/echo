@@ -1,8 +1,6 @@
 import { components } from "../../../_generated/api";
 import { Agent } from "@convex-dev/agent";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { resolveConversation } from "../tools/resolveConversation";
-import { escalateConversation } from "../tools/escalateConversation";
 
 const openrouter = createOpenRouter({
   apiKey: process.env.OPENROUTER_API_KEY,
