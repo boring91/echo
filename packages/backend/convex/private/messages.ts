@@ -5,7 +5,7 @@ import { components, internal } from "../_generated/api";
 import { supportAgent } from "../system/ai/agents/supportAgent";
 import { paginationOptsValidator } from "convex/server";
 import { saveMessage } from "@convex-dev/agent";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { google } from "@ai-sdk/google";
 
 export const enhanceResponse = action({
   args: {
@@ -31,12 +31,8 @@ export const enhanceResponse = action({
       });
     }
 
-    const openrouter = createOpenRouter({
-      apiKey: process.env.OPENROUTER_API_KEY,
-    });
-
     const response = await generateText({
-      model: openrouter("deepseek/deepseek-chat-v3-0324:free"),
+      model: google.chat("gemini-2.5-flash"),
       messages: [
         {
           role: "system",

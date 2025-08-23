@@ -1,17 +1,13 @@
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { generateText } from "ai";
 import type { StorageActionWriter } from "convex/server";
 import { assert } from "convex-helpers";
 import { Id } from "../_generated/dataModel";
-
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
+import { google } from "@ai-sdk/google";
 
 const AI_MODELS = {
-  image: openrouter.chat("deepseek/deepseek-chat-v3-0324:free"),
-  pdf: openrouter.chat("deepseek/deepseek-chat-v3-0324:free"),
-  html: openrouter.chat("deepseek/deepseek-chat-v3-0324:free"),
+  image: google.chat("gemini-2.5-flash"),
+  pdf: google.chat("gemini-2.5-flash"),
+  html: google.chat("gemini-2.5-flash"),
 } as const;
 
 const SUPPORTED_IMAGE_TYPE = [
